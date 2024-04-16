@@ -1,0 +1,39 @@
+using System;
+using System.Collections.Generic;
+
+namespace ConsoleApp18
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Solution s = new Solution();
+            Console.WriteLine(s.IsPalindrome(-313));
+            Console.ReadLine();
+        }
+    }
+    public class Solution
+    {
+        public bool IsPalindrome(int x)
+        {
+            bool kontrol=true;
+            string string_X=Convert.ToString(x);
+            char[] characters = string_X.ToCharArray();
+            Stack<char>stack=new Stack<char>();
+            Queue<char> queue=new Queue<char>();
+            for(int i=0; i<string_X.Length;i++)
+            {
+                stack.Push(characters[i]);
+                queue.Enqueue(characters[i]);
+            }
+            for(int i=0;i<stack.Count;i++)
+            {
+                if(stack.Pop()!=queue.Dequeue())
+                {
+                    kontrol = false;
+                }
+            }
+            return kontrol;
+        }
+    }
+}
